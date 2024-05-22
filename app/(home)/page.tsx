@@ -1,8 +1,9 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import styles from "./home.module.css";
+import Moive from "../../components/movie";
 
 async function getMovies() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
   const response = await fetch(
     "https://nomad-movies.nomadcoders.workers.dev/movies"
   );
@@ -17,14 +18,10 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const movies = await getMovies();
   return (
-    <div>
-      <h1>
-        {movies.map((movie) => (
-          <div key={movie.id}>
-            <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
-          </div>
-        ))}
-      </h1>
+    <div className={styles.container}>
+      {movies.map((movie) => (
+        <Moive movie={movie} key={movie.id} />
+      ))}
     </div>
   );
 }
