@@ -16,7 +16,7 @@ export async function generateMetadata({ params: { id } }: Parmas) {
 export default async function MovieDetail({ params: { id } }: Parmas) {
   return (
     <div>
-      <Suspense fallback={<h1>loading info...</h1>}>
+      <Suspense fallback={<h1>loading info....</h1>}>
         <MovieInfo id={id} />
       </Suspense>
       <Suspense fallback={<h1>loading videosx...</h1>}>
