@@ -12,7 +12,9 @@ export default function Moive({ movie }) {
   return (
     <div className={styles.movie}>
       <img src={movie.poster_path} onClick={clickHandle} />
-      <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
+      <Link prefetch href={`/movies/${movie.id}`}>
+        {movie.title}
+      </Link>
     </div>
   );
 }
